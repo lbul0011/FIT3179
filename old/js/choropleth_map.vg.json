@@ -1,0 +1,61 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Train station passengers per capita",
+  "width": 1200,
+  "height": 650,
+  "projection": {"type": "mercator"},
+  "data": {
+    "url": "data/test_2.json",
+    "format": {"type": "topojson", "feature": "SAL_2021_AUST_GDA2020"}
+  },
+  "layer": [
+    {
+      "transform": [
+        {
+          "lookup": "properties.SAL_CODE21",
+          "from": {
+            "data": {
+              "url": "data/suburb_passenger_totals.csv"
+            },
+            "key": "SAL_CODE21",
+            "fields": ["passengers_per_capita"]
+          }
+        },
+        {"calculate": "datum.passengers_per_capita + 1", "as": "passengers_per_capita"}
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "gray",      
+        "strokeWidth": 0.5     
+      },
+      "encoding": {
+        "color": {
+          "field": "passengers_per_capita",
+          "type": "quantitative",
+          "scale": {"type": "log", "range": "heatmap"},
+          "legend": {
+            "title": "Passengers Per Capita",
+            "offset": -300
+          }
+        },
+        "tooltip": [
+          {"field": "properties.SAL_NAME21", "type": "nominal", "title": "Suburb"},
+          {"field": "passengers_per_capita", "type": "quantitative", "format": ".2f"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/test_2.json",
+        "format": {"type": "topojson", "feature": "au_eez_pol_april2022"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "stroke": "black",
+        "strokeWidth": 1,
+        "fillOpacity": 0.6
+      }
+    
+    }
+  ]
+}

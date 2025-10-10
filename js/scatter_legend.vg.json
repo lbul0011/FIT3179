@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Scatterplot of station passenger counts with a line filter and formatted tooltip.",
+  "data": {"url": "data/metro_train_station/metro_train_station.csv"},
+  "params": [
+    {
+      "name": "LineSelect",
+      "value": null,
+      "bind": {
+        "input": "select",
+        "options": [null, "Belgrave", "Lilydale", "Frankston", "Sandringham", "Pakenham", "Cranbourne"],
+        "labels": ["All", "Belgrave", "Lilydale", "Frankston", "Sandringham", "Pakenham", "Cranbourne"],
+        "name": "Select Line: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "LineSelect == null || datum.Stop_line == LineSelect"}
+  ],
+  "mark": "point",
+  "encoding": {
+    "x": {
+      "field": "Pax_PM_peak",
+      "type": "quantitative",
+      "title": "School Holiday Weekday Pax"
+    },
+    "y": {
+      "field": "Pax_AM_peak",
+      "type": "quantitative",
+      "title": "AM Peak"
+    },
+    "color": {
+      "field": "Stop_line",
+      "type": "nominal",
+      "legend": {"title": "Line"}
+    },
+    "tooltip": [
+      {"field": "Stop_name", "title": "Station"},
+      {"field": "Stop_line", "title": "Line"},
+      {
+        "field": "Pax_weekday",
+        "title": "Weekday Pax",
+        "format": ","
+      },
+      {
+        "field": "Pax_sch_hol_weekday",
+        "title": "School Holiday Weekday Pax",
+        "format": ","
+      }
+    ]
+  }
+}

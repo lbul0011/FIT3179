@@ -1,0 +1,36 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {
+    "url": "data/metro_train_station/metro_train_station.csv"
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "aggregate": "sum",
+      "field": "Pax_annual",
+      "type": "quantitative",
+      "title": "Total Passengers (per year)"
+    },
+    "y": {
+      "field": "Year",
+      "type": "ordinal",
+      "title": "Year"
+    },
+    "color": {
+      "field": "Stop_line",
+      "type": "nominal",
+      "title": "Transport Mode"
+    },
+    "tooltip": [
+      {"field": "Year", "type": "ordinal", "title": "Year"},
+      {"field": "Stop_line", "type": "nominal", "title": "Train line"},
+      {
+        "aggregate": "sum",
+        "field": "Pax_annual",
+        "type": "quantitative",
+        "title": "Passengers",
+        "format": ","
+      }
+    ]
+  }
+}
