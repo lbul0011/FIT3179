@@ -1,0 +1,23 @@
+{
+  "data": {"url": "data/punctuality/punc_refined.csv"},
+  "title": "Punctuality of Victorian public transport",
+  "transform": [
+    {
+      "filter": "datum.mode != null && datum.mode !== ''" 
+    }
+  ],
+  "mark": {"type":"line","strokeWidth":3},
+  "encoding": {
+    "x": {"field": "year", "type": "temporal","title":"Year"},
+    "y": {"field": "ontime", "type": "quantitative","scale": {"domain": [0.8, 1]},"title":"Punctuality"},
+    "color": {"field": "mode", "type": "nominal"},
+    
+
+      "tooltip": [
+    {"field": "year", "type": "temporal", "title": "Year"},
+    {"field": "ontime", "type": "quantitative", "title": "Punctuality"},
+    {"field": "mode", "type": "nominal", "title": "Mode"}               
+  ]
+  }
+  
+}

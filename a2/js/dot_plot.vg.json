@@ -1,0 +1,64 @@
+{
+  "data": {"url": "data/metro_train_station/metro_train_station.csv"},
+  "width": 175,
+  "height": 400,
+  "transform": [
+    {
+      "filter": "datum.Year == 2018"
+    },
+    {
+      "filter": "datum.Stop_line !== 'City Loop'"
+    },
+    {
+      "fold": ["Pax_weekday", "Pax_sch_hol_weekday"],
+      "as": ["Passenger_Type", "Pax_Value"]
+    },
+    {
+      "aggregate": [
+        {"op": "average", "field": "Pax_Value", "as": "Avg_Pax_Value"}
+      ],
+      "groupby": ["Stop_line", "Passenger_Type"]
+    }
+  ],
+  "layer": [
+    {
+      "mark": {"type": "rule", "size": 1},
+      "encoding": {
+        "x": {"aggregate": "min", "field": "Avg_Pax_Value", "type": "quantitative"},
+        "x2": {"aggregate": "max", "field": "Avg_Pax_Value"},
+        "y": {"field": "Stop_line", "type": "nominal"}
+      }
+    },
+    {
+      "mark": "point",
+      "encoding": {
+        "x": {
+          "field": "Avg_Pax_Value",
+          "type": "quantitative",
+          "title": "Average Passenger Count"
+        },
+        "y": {
+          "field": "Stop_line",
+          "type": "nominal",
+          "title": "Train Line"
+        },
+        "color": {
+          "field": "Passenger_Type",
+          "type": "nominal",
+          "title": "Pax Type",
+          "legend": {
+            "title": "Passenger Type",
+            "labelExpr": "datum.label == 'Pax_weekday' ? 'Weekday' : 'School Weekday'"
+          }
+        },
+        "tooltip": [
+          {"field": "Stop_line", "title": "Train Line"},
+          {"field": "Passenger_Type", "title": "Passenger Type", "format": ".0f"},
+          {"field": "Avg_Pax_Value", "title": "Avg Pax", "format": ".0f"}
+        ],
+        "size": {"value": 100}
+      }
+    }
+  ],
+  "title": "Comparison of Average Weekday Passenger Counts for 2018 by Train Line"
+}
