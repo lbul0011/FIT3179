@@ -18,33 +18,19 @@ background-color: #e3e3e3;
     padding: 0;
 }
 
-
-
 .page {
     width: 1000px;
     background-color: white;
     margin: auto;
-
-  /* A crisp white background for the content */
     background-color: #ffffff; 
-    
-    /* Limit width and center it */
-    max-width: 1000px; /* Example width */
+    max-width: 1000px; 
     margin-left: auto;
     margin-right: auto;
-    
-    /* Add internal padding */
     padding: 30px; 
-    
-    /* **The Effect:** A subtle box shadow to lift the content */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
-    
-    /* Optional: Slightly rounded corners */
     border-radius: 12px;
 
 }
-
-  
 /* Paragraph formatting */
 #para-1 {
   align-items: center;
@@ -78,7 +64,6 @@ background-color: #e3e3e3;
   padding: 20px;
 }
 
-
 /*Headings, sub-headings*/
 h1 {
     text-align: center;
@@ -95,9 +80,9 @@ h1 {
   padding: 1px 10px;
   font-size: 12px;
   font-weight: 600;
-  background: #e3e3e3;           /* subtle background band */
+  background: #e3e3e3;           
   border-radius: 6px;
-  border-left: 5px solid #0078e7; /* Pure.css blue accent */
+  border-left: 5px solid #0078e7; 
   color: #1a1a1a;
 }
 
