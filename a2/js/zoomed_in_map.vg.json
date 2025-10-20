@@ -1,0 +1,156 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 250,
+  "projection": {"type": "mercator"},
+  "layer": [
+    {
+      "data": {
+        "url": "data/zoomed_in.json",
+        "format": {"type": "topojson", "feature": "SAL_2021_AUST_GDA2020"}
+      },
+      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+    },
+
+    {
+      "data": {
+        "url": "data/annual_metropolitan_train_station_entries_fy_2024_2025.csv"
+      },
+      "transform": [
+        {
+          "filter": "datum.Stop_lat >= -37.88928635886112 && datum.Stop_lat <= -37.78784805244737 && datum.Stop_long >= 144.92171416102195 && datum.Stop_long <= 145.04416111706314"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "color": "red",
+        "opacity": 0.4,
+        "stroke": "black",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "longitude": {"field": "Stop_long", "type": "quantitative"},
+        "latitude": {"field": "Stop_lat", "type": "quantitative"},
+        "size": {
+          "field": "Pax_annual",
+          "type": "quantitative",
+          "title": null,
+          "scale": {
+            "type": "threshold",
+            "domain": [100000, 250000, 500000, 1000000, 10000000],
+            "range": [15, 30, 50, 85, 150, 200]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {"field": "Stop_name", "title": "Station: "},
+          {"field": "Pax_annual", "title": "Annual passenger count: ", "format": ","}
+        ]
+      }
+    },
+
+    {
+      "data": {
+        "url": "data/annual_metropolitan_train_station_entries_fy_2024_2025.csv"
+      },
+      "transform": [
+        {
+          "filter": "datum.Stop_lat >= -37.88928635886112 && datum.Stop_lat <= -37.78784805244737 && datum.Stop_long >= 144.92171416102195 && datum.Stop_long <= 145.04416111706314"
+        },
+        {
+          "calculate": "toNumber(replace(datum.Pax_annual, /,/g, ''))",
+          "as": "Pax_num"
+        },
+        {
+          "joinaggregate": [
+            {"op": "max", "field": "Pax_num", "as": "max_pax"}
+          ]
+        },
+        {
+          "filter": "datum.Pax_num === datum.max_pax"
+        },
+        {
+          "calculate": "'Busiest: ' + '\\n' + datum.Stop_name",
+          "as": "Busiest_label"
+        }
+      ],
+      "layer": [
+        {
+          "mark": {
+            "type": "point",
+            "filled": true,
+            "size": 250,
+            "color": "gold",
+            "stroke": "black",
+            "strokeWidth": 1.5
+          },
+          "encoding": {
+            "longitude": {"field": "Stop_long", "type": "quantitative"},
+            "latitude": {"field": "Stop_lat", "type": "quantitative"}
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "dx": 60,
+            "dy": 35,
+            "fontWeight": "bold",
+            "fontSize": 13,
+            "align": "right",
+            "color": "black"
+          },
+          "encoding": {
+            "longitude": {"field": "Stop_long"},
+            "latitude": {"field": "Stop_lat"},
+            "text": {"field": "Busiest_label"},
+            "tooltip": [
+              {"field": "Stop_name", "title": "Busiest station"},
+              {"field": "Pax_num", "title": "Annual passengers", "format": ","}
+            ]
+          }
+        }
+      ]
+    },
+
+    {
+      "data": {
+        "url": "data/zoomed_in.json",
+        "format": {"type": "topojson", "feature": "au_eez_pol_april2022"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "stroke": "black",
+        "strokeWidth": 1,
+        "fillOpacity": 0.6
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "type": "Feature",
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [144.92171416102195, -37.78784805244737],
+                  [145.04416111706314, -37.78784805244737],
+                  [145.04416111706314, -37.88928635886112],
+                  [144.92171416102195, -37.88928635886112],
+                  [144.92171416102195, -37.78784805244737]
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      "mark": {
+        "type": "geoshape",
+        "stroke": "yellow",
+        "strokeWidth": 3,
+        "fill": null
+      }
+    }
+  ]
+}

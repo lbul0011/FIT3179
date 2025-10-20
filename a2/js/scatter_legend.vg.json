@@ -1,0 +1,70 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": "container",
+  "height": 400,
+  "description": "Scatterplot of station passenger counts with a line and year filter and formatted tooltip.",
+  "data": {"url": "data/metro_train_station/metro_train_station.csv"},
+  "params": [
+    {
+      "name": "LineSelect",
+      "value": null,
+      "bind": {
+        "input": "select",
+        "options": [null, "Belgrave", "Lilydale", "Frankston", "Sandringham", "Pakenham", "Cranbourne"],
+        "labels": ["All", "Belgrave", "Lilydale", "Frankston", "Sandringham", "Pakenham", "Cranbourne"],
+        "name": "Select Line: "
+      }
+    },
+    {
+      "name": "YearSelect",
+      "value": 2018,
+      "bind": {
+        "input": "range",
+        "min": 2018,
+        "max": 2024,
+        "step": 1,
+        "name": "Select Year: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "LineSelect == null || datum.Stop_line == LineSelect"},
+    {"filter": "datum.Year == YearSelect"}
+  ],
+  "mark": "point",
+  "encoding": {
+    "x": {
+      "field": "Pax_weekend",
+      "type": "quantitative",
+      "title": "Weekend Passengers"
+    },
+    "y": {
+      "field": "Pax_weekday",
+      "type": "quantitative",
+      "title": "Weekday Passengers"
+    },
+    "color": {
+      "field": "Stop_line",
+      "type": "nominal",
+      "legend": {"title": "Line"}
+    },
+    "tooltip": [
+      {"field": "Stop_name", "title": "Station"},
+      {"field": "Stop_line", "title": "Line"},
+      {
+        "field": "Pax_weekday",
+        "title": "Weekday Passengers",
+        "format": ","
+      },
+      {
+        "field": "Pax_weekend",
+        "title": "Weekend Passengers",
+        "format": ","
+      },
+      {
+        "field": "Year",
+        "title": "Year"
+      }
+    ]
+  }
+}

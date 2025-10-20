@@ -1,0 +1,177 @@
+mode,year,month,TT_delivered,ontime
+Trams,2018,January,0.986,0.878
+Trams,2018,February,0.987,0.817
+Trams,2018,March,0.988,0.787
+Trams,2018,April,0.991,0.839
+Trams,2018,May,0.987,0.817
+Trams,2018,June,0.986,0.841
+Trams,2018,July,0.987,0.856
+Trams,2018,August,0.989,0.848
+Trams,2018,September,0.992,0.863
+Trams,2018,October,0.989,0.847
+Trams,2018,November,0.986,0.818
+Trams,2018,December,0.975,0.81
+Trams,2019,January,0.967,0.883
+Trams,2019,February,0.985,0.808
+Trams,2019,March,0.981,0.781
+Trams,2019,April,0.987,0.818
+Trams,2019,May,0.987,0.797
+Trams,2019,June,0.991,0.841
+Trams,2019,July,0.991,0.851
+Trams,2019,August,0.983,0.845
+Trams,2019,September,0.979,0.863
+Trams,2019,October,0.983,0.813
+Trams,2019,November,0.97,0.796
+Trams,2019,December,0.972,0.828
+Trams,2020,January,0.971,0.864
+Trams,2020,February,0.962,0.815
+Trams,2020,March,0.987,0.868
+Trams,2020,April,0.992,0.938
+Trams,2020,May,0.986,0.943
+Trams,2020,June,0.985,0.931
+Trams,2020,July,0.988,0.95
+Trams,2020,August,0.986,0.957
+Trams,2020,September,0.985,0.957
+Trams,2020,October,0.985,0.945
+Trams,2020,November,0.986,0.915
+Trams,2020,December,0.983,0.894
+Trams,2021,January,0.977,0.923
+Trams,2021,February,0.985,0.909
+Trams,2021,March,0.986,0.902
+Trams,2021,April,0.986,0.9
+Trams,2021,May,0.98,0.885
+Trams,2021,June,0.992,0.929
+Trams,2021,July,0.99,0.921
+Trams,2021,August,0.988,0.945
+Trams,2021,September,0.983,0.943
+Trams,2021,October,0.972,0.935
+Trams,2021,November,0.984,0.896
+Trams,2021,December,0.984,0.863
+Trams,2024,November,0.985,0.806
+Trams,2024,October,0.99,0.816
+Trams,2024,September,0.992,0.856
+Trams,2024,August,0.989,0.823
+Trams,2024,July,0.986,0.822
+Trams,2024,June,0.983,0.83
+Trams,2024,May,0.985,0.784
+Trams,2024,April,0.985,0.799
+Trams,2024,March,0.984,0.789
+Trams,2024,February,0.983,0.808
+Trams,2024,January,0.987,0.868
+Trams,2023,December,0.981,0.801
+Trams,2023,November,0.987,0.799
+Trams,2023,October,0.987,0.8
+Trams,2023,September,0.986,0.818
+Trams,2023,August,0.989,0.825
+Trams,2023,July,0.989,0.826
+Trams,2023,June,0.978,0.821
+Trams,2023,May,0.983,0.793
+Trams,2023,April,0.985,0.81
+Trams,2023,March,0.979,0.749
+Trams,2023,February,0.983,0.781
+Trams,2023,January,0.988,0.854
+Trams,2022,December,0.985,0.807
+Trams,2022,November,0.987,0.821
+Trams,2022,October,0.983,0.83
+Trams,2022,September,0.988,0.876
+Trams,2022,August,0.988,0.878
+Trams,2022,July,0.985,0.883
+Trams,2022,June,0.982,0.884
+Trams,2022,May,0.983,0.848
+Trams,2022,April,0.984,0.846
+Trams,2022,March,0.988,0.842
+Trams,2022,February,0.988,0.853
+Trams,2022,January,0.978,0.911
+Regional trains,2018,January,0.943,0.802
+Regional trains,2018,February,0.963,0.827
+Regional trains,2018,March,0.97,0.811
+Regional trains,2018,April,0.976,0.862
+Regional trains,2018,May,0.961,0.793
+Regional trains,2018,June,0.959,0.831
+Regional trains,2018,July,0.967,0.859
+Regional trains,2018,August,0.968,0.869
+Regional trains,2018,September,0.975,0.882
+Regional trains,2018,October,0.956,0.872
+Regional trains,2018,November,0.955,0.869
+Regional trains,2018,December,0.959,0.888
+Regional trains,2019,January,0.954,0.864
+Regional trains,2019,February,0.962,0.859
+Regional trains,2019,March,0.952,0.844
+Regional trains,2019,April,0.978,0.868
+Regional trains,2019,May,0.971,0.865
+Regional trains,2019,June,0.97,0.882
+Regional trains,2019,July,0.975,0.898
+Regional trains,2019,August,0.973,0.878
+Regional trains,2019,September,0.968,0.877
+Regional trains,2019,October,0.961,0.87
+Regional trains,2019,November,0.972,0.89
+Regional trains,2019,December,0.907,0.85
+Regional trains,2020,January,0.946,0.906
+Regional trains,2020,February,0.888,0.868
+Regional trains,2020,March,0.963,0.854
+Regional trains,2020,April,0.974,0.921
+Regional trains,2020,May,0.974,0.928
+Regional trains,2020,June,0.975,0.933
+Regional trains,2020,July,0.97,0.954
+Regional trains,2020,August,0.966,0.964
+Regional trains,2020,September,0.968,0.962
+Regional trains,2020,October,0.957,0.956
+Regional trains,2020,November,0.969,0.927
+Regional trains,2020,December,0.959,0.914
+Regional trains,2021,January,0.965,0.931
+Regional trains,2021,February,0.966,0.933
+Regional trains,2021,March,0.952,0.921
+Regional trains,2021,April,0.967,0.915
+Regional trains,2021,May,0.946,0.91
+Regional trains,2021,June,0.948,0.931
+Regional trains,2021,July,0.958,0.933
+Regional trains,2021,August,0.982,0.953
+Regional trains,2021,September,0.607,0.927
+Regional trains,2021,October,0.95,0.951
+Regional trains,2021,November,0.951,0.93
+Regional trains,2021,December,0.953,0.924
+Regional trains,2025,September,0.972,0.871
+Regional trains,2025,August,0.978,0.904
+Regional trains,2025,July,0.971,0.893
+Regional trains,2025,June,0.98,0.921
+Regional trains,2025,May,0.974,0.88
+Regional trains,2025,April,0.975,0.884
+Regional trains,2025,March,0.974,0.879
+Regional trains,2025,February,0.976,0.86
+Regional trains,2025,January,0.967,0.858
+Regional trains,2024,December,0.974,0.884
+Regional trains,2024,November,0.972,0.866
+Regional trains,2024,October,0.977,0.891
+Regional trains,2024,September,0.971,0.895
+Regional trains,2024,August,0.978,0.89
+Regional trains,2024,July,0.982,0.912
+Regional trains,2024,June,0.987,0.9
+Regional trains,2024,May,0.973,0.885
+Regional trains,2024,April,0.969,0.847
+Regional trains,2024,March,0.969,0.844
+Regional trains,2024,February,0.962,0.862
+Regional trains,2024,January,0.973,0.896
+Regional trains,2023,December,0.958,0.879
+Regional trains,2023,November,0.973,0.886
+Regional trains,2023,October,0.959,0.866
+Regional trains,2023,September,0.98,0.877
+Regional trains,2023,August,0.952,0.865
+Regional trains,2023,July,0.949,0.875
+Regional trains,2023,June,0.972,0.889
+Regional trains,2023,May,0.977,0.89
+Regional trains,2023,April,0.965,0.873
+Regional trains,2023,March,0.964,0.857
+Regional trains,2023,February,0.973,0.893
+Regional trains,2023,January,0.967,0.899
+Regional trains,2022,December,0.957,0.858
+Regional trains,2022,November,0.953,0.9
+Regional trains,2022,October,0.93,0.901
+Regional trains,2022,September,0.964,0.905
+Regional trains,2022,August,0.978,0.924
+Regional trains,2022,July,0.958,0.907
+Regional trains,2022,June,0.949,0.919
+Regional trains,2022,May,0.966,0.909
+Regional trains,2022,April,0.966,0.925
+Regional trains,2022,March,0.957,0.906
+Regional trains,2022,February,0.954,0.931
+Regional trains,2022,January,0.941,0.924

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {"url": "data/metro_train_station/metro_train_station.csv"},
+  "width": "container", 
+  "height": 400,
+
+  "transform": [
+    {
+      "filter": "datum.Line != 'City Loop'"
+    },
+    {
+      "aggregate": [{"op": "sum", "field": "Pax_annual", "as": "Annual_Pax"}],
+      "groupby": ["Year", "Line"]
+    },
+    {
+      "window": [{"op": "sum", "field": "Annual_Pax", "as": "Total_Annual_Pax"}],
+      "frame": [null, null],
+      "groupby": ["Year"]
+    },
+    {
+      "calculate": "datum.Annual_Pax / datum.Total_Annual_Pax",
+      "as": "Share_of_Total"
+    }
+  ],
+
+  "mark": "area",
+  "encoding": {
+    "x": {
+      "timeUnit": "year", 
+      "field": "Year",
+      "axis": {"domain": false, "format": "%Y"}
+    },
+    "y": {
+      "field": "Annual_Pax", 
+      "type": "quantitative",
+      "axis": null,
+      "stack": "normalize" 
+    },
+    "color": {"field":"Line", "scale":{"scheme": "category20b"}},
+    
+    "tooltip": [
+      {"field": "Year", "timeUnit": "year", "title": "Year", "type": "temporal"},
+      {"field": "Line", "title": "Train Line", "type": "nominal"},
+      {"field": "Annual_Pax", "title": "Annual Passengers (Total)", "format": ",.0f", "type": "quantitative"},
+      {"field": "Share_of_Total", "title": "Share of Total (%)", "format": ".1%", "type": "quantitative"}
+    ]
+  }
+}

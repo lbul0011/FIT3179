@@ -1,0 +1,154 @@
+
+/*Top level*/
+p {
+  font-size: 18px;
+  border-radius: 10px;
+  padding: 10px;
+
+  background-color: #F8F8F8;
+}
+
+.vis-container {
+  width: 100%
+}
+
+body {
+background-color: #e3e3e3; 
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.page {
+    width: 1000px;
+    background-color: white;
+    margin: auto;
+
+  /* A crisp white background for the content */
+    background-color: #ffffff; 
+    
+    /* Limit width and center it */
+    max-width: 1000px; /* Example width */
+    margin-left: auto;
+    margin-right: auto;
+    
+    /* Add internal padding */
+    padding: 30px; 
+    
+    /* **The Effect:** A subtle box shadow to lift the content */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+    
+    /* Optional: Slightly rounded corners */
+    border-radius: 12px;
+
+}
+
+  
+/* Paragraph formatting */
+#para-1 {
+  align-items: center;
+  display: flex; 
+  height: 522px; 
+  background-color: white;
+}
+
+#para-3 {
+  align-items: center;
+  display: flex; 
+  height: 677px; 
+  background-color: white;
+}
+
+#para-4 {
+  align-items: center;
+  display: flex; 
+  height: 824px; 
+  background-color: white;
+}
+
+#para-2 {
+  height: 500px; 
+  background-color: white;
+   padding: 20px;
+   
+}
+
+#para-1 p {
+  padding: 20px;
+}
+
+
+/*Headings, sub-headings*/
+h1 {
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    background-color: #037bfc;
+    border-radius: 0px;
+    font-size: 50px;
+    width: 100%;
+    font-family: 'Overpass', sans-serif;
+}
+
+#subheading-1 {
+  padding: 1px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #e3e3e3;           /* subtle background band */
+  border-radius: 6px;
+  border-left: 5px solid #0078e7; /* Pure.css blue accent */
+  color: #1a1a1a;
+}
+
+#references p {
+  font-size: 14px;
+  color: grey;
+}
+
+#para-sh {
+  align-items: center;
+  display: flex; 
+  height: 459px; 
+  background-color: white;
+}
+
+#norm-area-para {
+  align-items: center;
+  display: flex; 
+  height: 442px; 
+  background-color: white;
+}
+
+img {
+  scale: 60%;
+}
+
+.sh-text {
+  color: #89a6c6
+}
+
+.nw-text {
+  color: #f8a95c
+}
+
+.we-text {
+  color: #e6d410
+}
+
+.b-text {
+color: #4D9221
+}
+
+.rt-text {
+  color: #A50F15
+}
+
+.t-text {
+color: #54278F
+}
+
+.trams-text {
+  color: #006D2C
+}
+

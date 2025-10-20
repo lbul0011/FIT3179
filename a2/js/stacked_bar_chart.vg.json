@@ -1,0 +1,88 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width":"container",
+  "height": 400,
+  "data": {
+    "url": "data/monthly_average_patronage_by_day_type_and_by_mode.csv"
+  },
+  "title": "Annual passenger numbers by transport type",
+  "encoding": {
+    "x": {"field": "Year", "type": "ordinal", "title": "Year","axis": {"labelAngle": 45}},
+    "y": {
+      "aggregate": "sum",
+      "field": "Pax_daily",
+      "type": "quantitative",
+      "title": "Total Passengers (per year)",
+      "axis": {"format": "s"}
+    },
+    "color": {
+      "scale": {
+        "domain": ["Tram", "Train (Metropolitan)", "Train (Regional)", "Bus (Metropolitan)", "Bus (Regional)"],
+        "range": ["#006D2C","#54278F","#A50F15","#2B8CBE","#4D9221"]
+      },
+      "field": "Mode",
+      "type": "nominal",
+      "title": "Transport Mode",
+      "legend": {
+        "title": "Transport Mode",
+        "orient": "bottom",       
+        "direction": "horizontal"
+      }
+      
+    },
+    "tooltip": [
+      {"field": "Year", "type": "ordinal", "title": "Year"},
+      {"field": "Mode", "type": "nominal", "title": "Mode"},
+      {
+        "aggregate": "sum",
+        "field": "Pax_daily",
+        "type": "quantitative",
+        "title": "Passengers",
+        "format": "s"
+      }
+    ]
+  },
+  "layer": [
+    {
+      "params": [
+        {
+          "name": "mode_selection",
+          "select": {"type": "point", "fields": ["Mode"]},
+          "bind": "legend"
+        }
+      ],
+      "mark": "bar",
+      "encoding": {
+        "opacity": {
+          "condition": {"param": "mode_selection", "value": 1},
+          "value": 0.2
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "aggregate": [{"op": "sum", "field": "Pax_daily", "as": "Total_Pax"}],
+          "groupby": ["Year"]
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "bottom",
+        "dy":-3,
+        "fontSize": 11.5
+      },
+      "encoding": {
+        "x": {"field": "Year", "type": "ordinal"},
+        "y": {"field": "Total_Pax", "type": "quantitative"},
+        "color": {"value": "black"},
+        "text": {
+          "field": "Total_Pax",
+          "type": "quantitative",
+          "format": ".4s" 
+        }
+      }
+    }
+  ]
+}

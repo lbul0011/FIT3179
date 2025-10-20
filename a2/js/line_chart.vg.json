@@ -1,0 +1,110 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "data/punctuality/punc_expanded.csv"},
+  "transform": [
+    {
+      "calculate": "toDate(datum.year + '-' + datum.month + '-01')",
+      "as": "Date"
+    },
+    {"filter": "datum.mode != 'All'"},
+    {
+      "window": [{"op": "average", "field": "ontime", "as": "Mode_Avg_Ontime"}],
+      "frame": [null, null],
+      "groupby": ["mode"]
+    },
+    {
+      "window": [{"op": "max", "field": "ontime", "as": "Max_Ontime_Rate"}],
+      "groupby": ["mode"],
+      "frame": [null, null]
+    }
+  ],
+  "facet": {
+    "column": {
+      "field": "mode",
+      "type": "nominal",
+      "header": {"title": null}
+    }
+  },
+  "spec": {
+    "width": 275,
+    "layer": [
+      {
+        "mark": {"type": "line", "point": false, "tooltip": true},
+        "encoding": {
+          "x": {
+            "field": "Date",
+            "type": "temporal",
+            "title": "Month",
+            "axis": {"format": "%Y", "tickCount": "year"}
+          },
+          "y": {
+            "field": "ontime",
+            "type": "quantitative",
+            "title": "On-Time Rate",
+            "axis": {"format": ".1%"},
+            "scale": {"domain": [0.75, 1]}
+          },
+          "color": {
+            "field": "mode",
+            "type": "nominal",
+            "legend": null,
+            "scale": {
+              "domain": ["Regional trains", "Trams"],
+              "range": ["#A50F15", "#006D2C"]
+            }
+          },
+          "tooltip": [
+            {"field": "Date", "type": "temporal", "title": "Month"},
+            {"field": "mode", "type": "nominal", "title": "Mode"},
+            {"field": "ontime", "title": "On-Time Rate", "format": ".2%"}
+          ]
+        }
+      },
+      {
+        "mark": {"type": "rule", "strokeDash": [4, 4], "color": "black", "size": 1.5},
+        "encoding": {
+          "y": {"field": "Mode_Avg_Ontime", "type": "quantitative"},
+          "tooltip": [
+            {"field": "Mode_Avg_Ontime", "title": "Mode Average", "format": ".2%"}
+          ]
+        }
+      },
+      {
+        "transform": [
+          {"filter": "datum.ontime == datum.Max_Ontime_Rate"},
+          {
+            "window": [{"op": "rank", "as": "rank"}],
+            "sort": [{"field": "Date", "order": "ascending"}],
+            "groupby": ["mode"]
+          },
+          {"filter": "datum.rank == 1"}
+        ],
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "dx": 5,
+          "dy": -5,
+          "fontSize": 11,
+          "fontWeight": "bold"
+        },
+        "encoding": {
+          "x": {"field": "Date", "type": "temporal"},
+          "y": {"field": "ontime", "type": "quantitative"},
+          "text": {"field": "ontime", "type": "quantitative", "format": ".1%"},
+          "color": {
+            "field": "mode",
+            "scale": {
+              "domain": ["Regional trains", "Trams"],
+              "range": ["#A50F15", "#006D2C"]
+            }
+          },
+          "tooltip": [
+            {"field": "Date", "type": "temporal", "title": "Month"},
+            {"field": "ontime", "title": "Max Rate", "format": ".2%"}
+          ]
+        }
+      }
+    ]
+  },
+  "resolve": {"axis": {"y": "shared"}, "scale": {"y": "shared"}}
+}

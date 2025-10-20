@@ -1,0 +1,180 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  
+  "data": {
+    "url": "data/monthly_average_patronage_by_day_type_and_by_mode.csv"
+  },
+  "params": [
+    {
+      "name": "mode_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          "All",
+          "Bus (Metropolitan)",
+          "Bus (Regional)",
+          "Train (Metropolitan)",
+          "Train (Regional)",
+          "Tram"
+        ],
+        "name": "Select Mode: "
+      },
+      "value": "All"
+    }
+  ],
+  "vconcat": [
+    {
+      "name": "detail_chart",
+      "title": "Monthly average patronage",
+      "width": 570,
+      "height": 350,
+      "transform": [
+        {
+          "filter": "mode_selection == 'All' || datum.Mode == mode_selection"
+        },
+        {
+          "calculate": "datum.Day_type == 'Normal Weekday' ? 'Normal Weekday' : datum.Day_type == 'School Holiday Weekday' ? 'School Holiday Weekday' : 'Weekend'",
+          "as": "Day_category"
+        },
+        {
+          "calculate": "toDate(datum.Year + '-' + datum.Month + '-01')",
+          "as": "Date"
+        },
+        {
+          "aggregate": [
+            {"op": "sum", "field": "Pax_daily", "as": "total_pax"}
+          ],
+          "groupby": ["Date", "Day_category"]
+        }
+      ],
+      "mark": {
+        "type": "area",
+        "interpolate": "monotone",
+        "tooltip": true,
+        "clip": true
+      },
+      "encoding": {
+        "x": {
+          "field": "Date",
+          "type": "temporal",
+          "title": "Month",
+          "scale": {"domain": {"param": "time_brush"}},
+          "axis": {"format": "%b %Y", "labelAngle": -30}
+        },
+        "y": {
+          "field": "total_pax",
+          "type": "quantitative",
+          "title": "Total Monthly Passengers",
+          "stack": "zero"
+        },
+        "color": {
+          "field": "Day_category",
+          "type": "nominal",
+          "title": "Day Type",
+          "scale": { 
+            "domain": [
+              "Normal Weekday",
+              "School Holiday Weekday",
+              "Weekend"
+            ],
+            "range": ["#f8a95c","#89a6c6","#e6d410"
+              
+            ]
+          }
+        },
+        "order": {
+          "field": "Day_category",
+          "sort": "ascending"
+        },
+        "opacity": {"value": 0.9},
+        "tooltip": [
+          {"field": "Date", "type": "temporal", "title": "Month","timeUnit":"yearmonth" },
+          {"field": "Day_category", "type": "nominal", "title": "Day Type"},
+          {
+            "field": "total_pax",
+            "type": "quantitative",
+            "title": "Total Passengers",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "name": "context_chart",
+      "title": "Overview (Drag to filter)",
+      "width": 570,
+      "height": 100,
+      "transform": [
+        {
+          "filter": "mode_selection == 'All' || datum.Mode == mode_selection"
+        },
+        {
+          "calculate": "datum.Day_type == 'Normal Weekday' ? 'Normal Weekday' : datum.Day_type == 'School Holiday Weekday' ? 'School Holiday Weekday' : 'Weekend'",
+          "as": "Day_category"
+        },
+        {
+          "calculate": "toDate(datum.Year + '-' + datum.Month + '-01')",
+          "as": "Date"
+        },
+        {
+          "aggregate": [
+            {"op": "sum", "field": "Pax_daily", "as": "total_pax"}
+          ],
+          "groupby": ["Date", "Day_category"]
+        }
+      ],
+      "mark": {
+        "type": "area",
+        "interpolate": "monotone",
+        "clip": true
+      },
+      "encoding": {
+        "x": {
+          "field": "Date",
+          "type": "temporal",
+          "title": null,
+          "axis": {"format": "%Y", "tickCount": "year"}
+        },
+        "y": {
+          "field": "total_pax",
+          "type": "quantitative",
+          "title": null,
+          "stack": "zero",
+          "axis": null
+        },
+        "color": {
+          "field": "Day_category",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "domain": [
+              "Normal Weekday",
+              "School Holiday Weekday",
+              "Weekend"
+            ],
+            "scheme": "category20b"
+          }
+        },
+        "order": {
+          "field": "Day_category",
+          "sort": "ascending"
+        },
+        "opacity": {"value": 0.5}
+      },
+      "params": [
+        {
+          "name": "time_brush", 
+          "select": {"type": "interval", "encodings": ["x"]} 
+        }
+      ]
+    }
+  ],
+  "config": {
+    "autosize": {"type": "fit", "contains": "padding"},
+    "view": {"stroke": "transparent"},
+    "axis": {"labelFontSize": 12, "titleFontSize": 14},
+    "legend": {"orient": "top", "titleFontSize": 13}, 
+    "mark": {"tooltip": {"content": "encoding"}}
+  },
+  "padding": 10
+}

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="https://cdn.jsdelivr.net/npm/vega@6.2.0"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-lite@6.4.1"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-embed@7.0.2"></script>
+        <script src="js/vega_lite_vis.js"></script>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/styles.css">
+
+        <title>Public transport in Victoria</title>
+    </head>
+
+    <body>
+        <div class="page">
+            <div class="pure-g">
+                <div class="pure-u-1-1">
+                    <h1>Public transport in Victoria</h1>
+                </div>
+            </div>
+            <div class="pure-g">
+                <div class="pure-u-1-1">
+                    <div id="subheading-1">
+                        <h2>How do Victorians travel?</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pure-g">
+                <div class="pure-u-1-2">
+                    <div id="stacked_bar_chart" class="vis-container"></div>
+                </div>
+
+                <div class="pure-u-1-2">
+                    <div id="para-1" class="vis-container">
+                        <p>There are primarily 3 types of public transport available in Victoria: Buses, trains and trams. There are metropolitan and regional train services,
+                            in addition to metropolitan and regional buses. Victoria is home to the largest tram network in the world, it serves the inner-city region of Melbourne.
+                            <br><br>
+                            Prior to the COVID-19 pandemic, a total of around 180 million public transport trips were taken. Post-pandemic public transport usage has yet to recover
+                            to these levels. Since reaching a low of 68.48 million trips in 2020, each subsequent year has shown a steady increase in usage. 
+                            <br><br>
+                            Unsuprisingly, the most popular transport options are the metropolitan services - trains, buses and trams. Trains take top spot, followed by trams and 
+                            then buses. Click each of the entries on the legend to emphasise particular transport modes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pure-g">
+                <div class="pure-u-1-3">
+                    <div id="para-3" class="vis-container"><p>The monthly average patronage for Victoria's various public transport modes paints an interesting picture. 
+                        The periodic <span class="sh-text">school holidays</span> are clearly visible. The end/start of each is characterised by drops in <span class="nw-text">
+                            normal patronage</span>. Also visible are the average <span class="we-text">weekend</span> passenger trends.
+                            <br><br>
+                            Use the brushing slider to adjust the time period displayed on the main chart and the mode dropdown to more closely examine Victoria's public transport system!     
+                    </p></div>
+                </div>
+                <div class="pure-u-2-3">
+                    <div id="area_chart_2" class="vis-container"></div>
+                </div>
+                
+                
+            </div>
+
+            <div class="pure-g">
+                <div class="pure-u-1-1", id="subheading-1">
+                    <div>
+                        <h2>Public transport punctuality</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pure-g">
+                <div class="pure-u-2-3">
+                    
+                    <div class="pure-g">
+                        <div class="pure-u-1">
+                            <div id="punctuality_line_chart_2" class="vis-container"></div>
+                        </div>
+                    </div> 
+
+                    <div class="pure-g">
+                        <div class="pure-u-1">
+                            <div id="punctuality_line_chart" class="vis-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pure-u-1-3", id="para-4">
+                    <p>The punctuality of Victoria's various public transport options paints an interesting story. The effects of the COVID-19 pandemic are 
+                        extremely clear, with the on-time punctuality of all services jumping quite dramatically. This is the result of a reduced number of services
+                        running during this period, easing pressure on the transit system considerably. 
+                        <br><br>
+                        On average (as indicated by the dashed lines) it's clear that <span class='t-text'>metropolitan trains</span> are the most punctual. <span class=b-text>Buses</span> - suprisingly - are the second most
+                        punctual option, despite having to contend with road traffic. <span class='trams-text'>Trams</span> are the most likely to be late, perhaps owing to their shared use of roads 
+                        in the congested CBD. 
+                        <br><br>
+                        Unfortunately for <span class='trams-text'>tram</span> users, on-time performance is currently about the same after the pandemic as it was before. All other transport options 
+                        have improved their punctuality after the pandemic and retained this increase. As shown above, this may be the direct result of less people using 
+                        services.
+                    </p>
+                </div>
+            </div>
+
+            <div class="pure-g">
+                <div class="pure-u-1-1", id="subheading-1">
+                    <div>
+                        <h2>A deeper dive on Melbourne's metropolitan trains</h2>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="pure-g">
+                <div class="pure-u-1-2">
+                    <div id="symbol_map" class="vis-container"></div>
+                </div>
+            
+                <div class="pure-u-1-2">
+                    <div id="zoomed_in_map" class="vis-container"></div>
+                    
+                    <div class="vis-container">
+                        <p>The Victorian train network is incredibly expansive. Combined, there are a total of 222 passenger 
+                            train stations in Victoria. Here you can see the busiest and least busiest stations in the network. It's clear that suburban train stations are 
+                            extensively used by Melbournians. By passenger count, the CBD stations are the busiest - reflecting the concentrated workforce in the city and 
+                            the limited alternative transit options (see above map for further details). <br><br> As urban sprawl continues across Melbourne, there is a shifting
+                            trend in the demand placed on outer suburban stations. You can see this in the outer Western and Northern lines, in stations such
+                            as Werribee (1,049,600), Watergardens (1,295,450) and Craigieburne (1,508,250). These stations are responsible for serving
+                            some of the fastest growing pockets of Melbourne, and reflect the increasing pressures placed on the public train system.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pure-g">
+                <div class="pure-u-1-1", id="subheading-1">
+                    <div>
+                        <h2>Train usage trends</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pure-g">
+                <div class="pure-u-1-2">
+                    <div id='para-2'>
+                        <p>The Victorian train schedule can be broadly categorised into the following groups: </p>
+                        <ul>
+                            <li>Pre AM: 12:00am - 6:59am</li>
+                            <li>AM Peak: 7:00am - 9:29am</li>
+                            <li>Interpeak: 9:30am - 2:59pm</li>
+                            <li>PM Peak: 3:00pm - 6:59pm</li>
+                            <li>PM Late: 7:00pm - 11:59pm</li>
+                        </ul>
+                        <p>In general, the busiest times for the train system are during the AM peak. This reflects the high demand for the system 
+                            both by students and those commuting to work. There is also considerable demand on the system in the PM peak and interpeak periods. 
+                            Interestingly, during 2020 (when Victoria was largely shutdown due to the COVID-19 pandemic) the highest peak periods shifted
+                            from the AM peak to the PM peak. 
+                            <br><br>
+                            Use the year dropdown to explore further trends in patronage from 2018-2022. Note the heatmap scale is not fixed, it shows the relative
+                            patronage for that year and shouldn't be used to compare years against each other.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="pure-u-1-2">
+                    <div id="heatmap" class="vis-container"></div>
+                </div>
+            </div>
+
+            <div class="pure-g">
+                <div class="pure-u-2-3">
+                    <div id="connected_dot_plot" class="vis-container"></div>
+                </div>
+
+                <div class="pure-u-1-3">
+                    <div id="para-sh" class="vis-container">
+                        <p>Certain train lines are more heavily used by school aged passengers. Here the difference between the average number of 
+                            passengers on <span class="sh-text">school holidays</span> vs. <span class="nw-text">normal weekdays</span> is shown. 
+                            All lines (except Flemington Racecourse) exhibit a decrease in patronage during school holidays,
+                            with the Pakenham and Hughesdale lines showing the largest drops. The increase in patronage on the Flemington Racecourse line during
+                            <span class="sh-text">school holidays</span> is likely the result of the various events hosted at the Melbourne Showgrounds and Flemington Racecourse.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pure-g">
+
+                <div class="pure-u-1-3">
+                    <div id="norm-area-para">
+                        <p>Demand across the metropolitan train network has remained fairly steady across the networks various lines. As with other forms of transport the 
+                            most drastic changes to this behaviour occured during the COVID-19 pandemic. Interestingly, the rapid growth of Melbourne's outer suburbs 
+                            is reflected in the increased demand on lines serving these areas such as the Pakenham and Cranbourne lines.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="pure-u-2-3">
+                    <div id="area_chart" class="vis-container"></div>
+                </div>
+
+
+            </div>
+
+            <div class="pure-g">
+                <div class="pure-u-1-1">
+                    <div id="references">
+                        <p>Made by Lyndon Bulman, last updated 19/10/2025
+                            <br>
+                            Information used for this visualisation is available from:
+                            <br>
+                            https://opendata.transport.vic.gov.au/dataset/?organization=public-transport
+                            <br>
+                            https://www.vic.gov.au/public-transport-monthly-performance/
+                            <br>
+                            https://yarratrams.com.au/performance-results
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>
